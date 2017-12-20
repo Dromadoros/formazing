@@ -1,0 +1,5 @@
+name: formazing
+type: module
+description: Create awesome form and can be linked to a webservice
+core: 8.x
+package: Custom

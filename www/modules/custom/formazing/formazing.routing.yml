@@ -1,0 +1,33 @@
+entity.formazing_entity.add_field:
+  path: '/admin/structure/formazing_entity/{formazing_entity}/add-field'
+  defaults:
+    _form: '\Drupal\formazing\Form\AddFieldForm'
+    _title: 'Add new field'
+  requirements:
+    _permission: 'add formazing entity entities'
+
+entity.formazing_entity_elements.view:
+  path: '/admin/structure/formazing_entity/{formazing_entity}/view'
+  defaults:
+    _form: '\Drupal\formazing\Form\FormazingEntityFieldsOverview'
+    _title: 'View elements'
+  requirements:
+    _permission: 'formazing entities view'
+
+entity.formazing_entity_field.edit:
+  path: '/admin/structure/formazing_entity/{formazing_entity}/field/{field_formazing_entity}/edit'
+  defaults:
+    _form: '\Drupal\formazing\Form\FieldFormazingEntityEditForm'
+    _title: 'Edit field'
+  requirements:
+    _permission: 'formazing entities view'
+formazing.dynamic_form:
+  path: '/admin/config/formazing/dynamic'
+  defaults:
+    _form: '\Drupal\formazing\Form\DynamicForm'
+    _title: 'DynamicForm'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+
