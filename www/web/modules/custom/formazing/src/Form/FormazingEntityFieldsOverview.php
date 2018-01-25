@@ -131,7 +131,6 @@ class FormazingEntityFieldsOverview extends FormBase
             ];
             $form['table'][$element->id()]['delete'] = [
               '#type' => 'operations',
-              '#title' => t('Operations'),
               '#links' => [
                 'edit' => [
                   'title' => $this->t('Edit', [], ['formazing']),
@@ -151,7 +150,7 @@ class FormazingEntityFieldsOverview extends FormBase
         }
         $form['actions']['submit'] = [
           '#type' => 'submit',
-          '#value' => $this->t('Submit', [], ['formazing']),
+          '#value' => $this->t('Save order', [], ['formazing']),
             // TableSelect: Enable the built-in form validation for #tableselect for
             // this form button, so as to ensure that the bulk operations form cannot
             // be submitted without any selected items.
