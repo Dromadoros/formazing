@@ -131,6 +131,7 @@ class FormazingEntityFieldsOverview extends FormBase
             ];
             $form['table'][$element->id()]['delete'] = [
               '#type' => 'operations',
+              '#title' => t('Operations'),
               '#links' => [
                 'edit' => [
                   'title' => $this->t('Edit', [], ['formazing']),

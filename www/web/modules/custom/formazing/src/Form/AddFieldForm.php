@@ -102,7 +102,5 @@ class AddFieldForm extends ConfigFormBase
           'formazing_entity' => $formazingId,
           'field_formazing_entity' => $entity->id()
         ]);
-        
     }
-    
 }
