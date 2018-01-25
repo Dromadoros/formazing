@@ -7,7 +7,7 @@ use Drupal\formazing\FieldHelper\Properties\PropertiesInterface;
 
 /**
  * Class Field
- * @package Drupal\formazing\FieldSettingsRenderer
+ * @package Drupal\formazing\FieldSettings
  */
 abstract class TextareaProperties implements PropertiesInterface
 {

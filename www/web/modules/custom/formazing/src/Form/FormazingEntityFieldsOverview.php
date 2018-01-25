@@ -107,7 +107,7 @@ class FormazingEntityFieldsOverview extends FormBase
             
             $form['table'][$element->id()]['#weight'] = $element->getWeight();
             
-            /** @var \Drupal\formazing\FieldSettingsRenderer\TextField $fieldType */
+            /** @var \Drupal\formazing\FieldSettings\TextField $fieldType */
             $fieldType = $element->getFieldType();
             
             $form['table'][$element->id()]['type'] = [

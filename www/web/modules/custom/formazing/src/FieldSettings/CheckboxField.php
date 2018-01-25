@@ -1,10 +1,11 @@
 <?php
 
-namespace Drupal\formazing\FieldSettingsRenderer;
+namespace Drupal\formazing\FieldSettings;
 
-use Drupal\formazing\FieldHelper\Properties\TextfieldProperties;
+use Drupal\formazing\FieldHelper\Properties\CheckboxProperties;
+use Drupal\formazing\FieldViewer\Parser\CheckboxParser;
 
-class TextField extends TextfieldProperties
+class CheckboxField extends CheckboxProperties
 {
     /**
      * @param $entity
@@ -16,7 +17,6 @@ class TextField extends TextfieldProperties
         $form['name'] = parent::settingName($entity);
         $form['type'] = parent::settingType($entity);
         $form['value'] = parent::settingValue($entity);
-        $form['placeholder'] = parent::settingPlaceholder($entity);
         $form['prefix'] = parent::settingPrefix($entity);
         $form['suffix'] = parent::settingSuffix($entity);
         $form['is_required'] = parent::settingRequired($entity);
@@ -31,6 +31,13 @@ class TextField extends TextfieldProperties
      * @return string
      */
     public static function getMachineTypeName(){
-        return 'textfield';
+        return 'checkbox';
+    }
+    
+    /**
+     * @return string
+     */
+    public static function getParser(){
+        return CheckboxParser::class;
     }
 }

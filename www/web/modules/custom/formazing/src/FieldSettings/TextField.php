@@ -1,10 +1,11 @@
 <?php
 
-namespace Drupal\formazing\FieldSettingsRenderer;
+namespace Drupal\formazing\FieldSettings;
 
-use Drupal\formazing\FieldHelper\Properties\TextareaProperties;
+use Drupal\formazing\FieldHelper\Properties\TextfieldProperties;
+use Drupal\formazing\FieldViewer\Parser\TextfieldParser;
 
-class TextareaField extends TextareaProperties
+class TextField extends TextfieldProperties
 {
     /**
      * @param $entity
@@ -31,6 +32,13 @@ class TextareaField extends TextareaProperties
      * @return string
      */
     public static function getMachineTypeName(){
-        return 'textarea';
+        return 'textfield';
+    }
+    
+    /**
+     * @return string
+     */
+    public static function getParser(){
+        return TextfieldParser::class;
     }
 }

@@ -6,9 +6,9 @@ use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\formazing\Entity\FieldFormazingEntity;
 use Drupal\formazing\Entity\FormazingEntity;
-use Drupal\formazing\FieldSettingsRenderer\CheckboxField;
-use Drupal\formazing\FieldSettingsRenderer\TextareaField;
-use Drupal\formazing\FieldSettingsRenderer\TextField;
+use Drupal\formazing\FieldSettings\CheckboxField;
+use Drupal\formazing\FieldSettings\TextareaField;
+use Drupal\formazing\FieldSettings\TextField;
 
 /**
  * Class AddFieldForm.

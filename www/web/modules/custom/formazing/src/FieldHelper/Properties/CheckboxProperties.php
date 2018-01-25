@@ -6,7 +6,7 @@ use Drupal\formazing\Entity\FieldFormazingEntity;
 
 /**
  * Class Field
- * @package Drupal\formazing\FieldSettingsRenderer
+ * @package Drupal\formazing\FieldSettings
  */
 abstract class CheckboxProperties implements PropertiesInterface
 {

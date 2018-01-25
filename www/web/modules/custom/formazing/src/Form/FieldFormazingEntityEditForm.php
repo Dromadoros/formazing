@@ -27,7 +27,7 @@ class FieldFormazingEntityEditForm extends FormBase
     {
         $field = FieldFormazingEntity::load($field_formazing_entity);
         
-        /** @var \Drupal\formazing\FieldSettingsRenderer\TextField $type */
+        /** @var \Drupal\formazing\FieldSettings\TextField $type */
         $type = $field->getFieldType();
         
         $form = $type::generateSettings($field);

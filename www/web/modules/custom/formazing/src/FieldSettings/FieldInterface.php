@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\formazing\FieldSettingsRenderer;
+namespace Drupal\formazing\FieldSettings;
 
 use Drupal\Core\Form\FormStateInterface;
 

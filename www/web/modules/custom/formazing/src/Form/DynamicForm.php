@@ -43,7 +43,11 @@ class DynamicForm extends FormBase
         
         /** @var FieldFormazingEntity $field */
         foreach ($fields as $field){
-            $form[] = FieldAction::parse($field);
+            /** @var \Drupal\formazing\FieldSettings\TextField $fieldType */
+            $fieldType = $field->getFieldType();
+            /** @var \Drupal\formazing\FieldViewer\Parser\Parser $parser */
+            $parser = $fieldType::getParser();
+            $form[] = $parser::parse($field);
         }
         
         return $form;
