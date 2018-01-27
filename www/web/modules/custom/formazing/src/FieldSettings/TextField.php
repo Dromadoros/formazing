@@ -31,14 +31,16 @@ class TextField extends TextfieldProperties
     /**
      * @return string
      */
-    public static function getMachineTypeName(){
+    public static function getMachineTypeName()
+    {
         return 'textfield';
     }
     
     /**
      * @return string
      */
-    public static function getParser(){
+    public static function getParser()
+    {
         return TextfieldParser::class;
     }
 }

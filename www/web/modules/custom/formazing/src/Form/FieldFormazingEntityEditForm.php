@@ -31,6 +31,8 @@ class FieldFormazingEntityEditForm extends FormBase
         $type = $field->getFieldType();
         
         $form = $type::generateSettings($field);
+        $options = $form['field_options'];
+        $form['field_options'] = array_filter($options, [$this, 'removeEmptyValue']);
         
         return $form;
     }
@@ -40,6 +42,12 @@ class FieldFormazingEntityEditForm extends FormBase
      */
     public function submitForm(array &$form, FormStateInterface $form_state)
     {
+        $values = $form_state->getValues();
+        switch ($values['op']) {
+            case 'Add option':
+                $this->addNewOption($form, $form_state);
+                break;
+        }
         $fieldId = $form_state->getValue('field_id');
         
         $field = FieldFormazingEntity::load($fieldId);
@@ -47,5 +55,27 @@ class FieldFormazingEntityEditForm extends FormBase
         FieldAction::saveField($field, $form_state);
         
         $form_state->setRedirect('entity.formazing_entity_elements.view', ['formazing_entity' => $form_state->getValue('formazing_id')]);
+    }
+    
+    /**
+     * @param array $form
+     * @param FormStateInterface $form_state
+     */
+    private function addNewOption($form, $form_state)
+    {
+        $values = $form_state->getValues();
+        $options = array_filter($values['field_options'], [$this, 'removeEmptyValue']);
+        array_push($options, ' ');
+        $form_state->setValue('field_options', $options);
+        
+        $form_state->setRebuild();
+    }
+    
+    /**
+     * @param $value
+     * @return string
+     */
+    private function removeEmptyValue($value){
+        return $value && $value !== ' ';
     }
 }

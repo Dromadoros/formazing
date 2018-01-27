@@ -6,6 +6,7 @@ use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\formazing\Entity\FieldFormazingEntity;
 use Drupal\formazing\Entity\FormazingEntity;
+use Drupal\formazing\FieldSettings\CheckboxesField;
 use Drupal\formazing\FieldSettings\CheckboxField;
 use Drupal\formazing\FieldSettings\TextareaField;
 use Drupal\formazing\FieldSettings\TextField;
@@ -60,6 +61,7 @@ class AddFieldForm extends ConfigFormBase
             TextField::class => t('Textfield', [], ['context' => 'formazing']),
             TextareaField::class => t('Textarea', [], ['context' => 'formazing']),
             CheckboxField::class => t('Checkbox', [], ['context' => 'formazing']),
+            CheckboxesField::class => t('Checkboxes', [], ['context' => 'formazing']),
           ],
           '#size' => 1,
           '#default_value' => $config->get('type_of_field'),
