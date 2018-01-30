@@ -31,8 +31,6 @@ class FieldFormazingEntityEditForm extends FormBase
         $type = $field->getFieldType();
         
         $form = $type::generateSettings($field);
-        $options = $form['field_options'];
-        $form['field_options'] = array_filter($options, [$this, 'removeEmptyValue']);
         
         return $form;
     }
@@ -64,18 +62,10 @@ class FieldFormazingEntityEditForm extends FormBase
     private function addNewOption($form, $form_state)
     {
         $values = $form_state->getValues();
-        $options = array_filter($values['field_options'], [$this, 'removeEmptyValue']);
+        $options = FieldAction::filterEmptyOption($values['field_options']);
         array_push($options, ' ');
         $form_state->setValue('field_options', $options);
         
         $form_state->setRebuild();
-    }
-    
-    /**
-     * @param $value
-     * @return string
-     */
-    private function removeEmptyValue($value){
-        return $value && $value !== ' ';
     }
 }

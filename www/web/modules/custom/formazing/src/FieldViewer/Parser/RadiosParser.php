@@ -2,8 +2,10 @@
 
 namespace Drupal\formazing\FieldViewer\Parser;
 
-abstract class Parser {
-    
+use Drupal\formazing\FieldHelper\FieldAction;
+
+class RadiosParser extends Parser
+{
     /**
      * @param \Drupal\formazing\Entity\FieldFormazingEntity $field
      * @return array
@@ -12,10 +14,13 @@ abstract class Parser {
     {
         /** @var \Drupal\formazing\FieldSettings\TextField $fieldType */
         $fieldType = $field->getFieldType();
+        $options = $field->get('field_options')->getValue();
+        $options = FieldAction::filterEmptyOption($options);
+        $options = array_map(function($value){ return $value['value']; }, $options);
         
         $render = [
           '#type' => $fieldType::getMachineTypeName(),
-          '#default_value' => $field->getFieldValue(),
+          '#options' => $options,
           '#required' => $field->isRequired(),
           '#prefix' => $field->getPrefix(),
           '#suffix' => $field->getSuffix(),

@@ -4,7 +4,8 @@ namespace Drupal\formazing\FieldHelper;
 
 use Drupal\Core\Form\FormStateInterface;
 
-class FieldAction {
+class FieldAction
+{
     
     /**
      * @param \Drupal\formazing\Entity\FieldFormazingEntity $entity
@@ -32,5 +33,32 @@ class FieldAction {
     public static function orderWeight($a, $b)
     {
         return $a->getWeight() < $b->getWeight() ? -1 : 1;
+    }
+    
+    
+    public static function filterEmptyOption($options)
+    {
+        if (!$options) {
+            return [];
+        }
+        
+        $options = array_filter($options, [
+          FieldAction::class,
+          'removeEmptyValue'
+        ]);
+        
+        return $options;
+    }
+    
+    /**
+     * Remove empty options
+     * @param $value
+     * @return string
+     */
+    public static function removeEmptyValue($value)
+    {
+        $value = str_replace(' ', '', $value);
+        
+        return $value['value'] && strlen($value['value']);
     }
 }

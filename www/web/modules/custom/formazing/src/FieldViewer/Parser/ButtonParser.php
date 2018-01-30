@@ -2,8 +2,8 @@
 
 namespace Drupal\formazing\FieldViewer\Parser;
 
-abstract class Parser {
-    
+class ButtonParser extends Parser
+{
     /**
      * @param \Drupal\formazing\Entity\FieldFormazingEntity $field
      * @return array
@@ -13,19 +13,11 @@ abstract class Parser {
         /** @var \Drupal\formazing\FieldSettings\TextField $fieldType */
         $fieldType = $field->getFieldType();
         
-        $render = [
+        return [
           '#type' => $fieldType::getMachineTypeName(),
-          '#default_value' => $field->getFieldValue(),
-          '#required' => $field->isRequired(),
+          '#value' => $field->getName(),
           '#prefix' => $field->getPrefix(),
           '#suffix' => $field->getSuffix(),
-          '#attributes' => [
-            'placeholder' => $field->getPlaceholder(),
-          ]
         ];
-        
-        $field->isShowingLabel() ? $render['#title'] = $field->getName(): FALSE;
-        
-        return $render;
     }
 }

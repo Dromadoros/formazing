@@ -8,6 +8,8 @@ use Drupal\formazing\Entity\FieldFormazingEntity;
 use Drupal\formazing\Entity\FormazingEntity;
 use Drupal\formazing\FieldSettings\CheckboxesField;
 use Drupal\formazing\FieldSettings\CheckboxField;
+use Drupal\formazing\FieldSettings\RadiosField;
+use Drupal\formazing\FieldSettings\SubmitField;
 use Drupal\formazing\FieldSettings\TextareaField;
 use Drupal\formazing\FieldSettings\TextField;
 
@@ -62,6 +64,8 @@ class AddFieldForm extends ConfigFormBase
             TextareaField::class => t('Textarea', [], ['context' => 'formazing']),
             CheckboxField::class => t('Checkbox', [], ['context' => 'formazing']),
             CheckboxesField::class => t('Checkboxes', [], ['context' => 'formazing']),
+            RadiosField::class => t('Radios', [], ['context' => 'formazing']),
+            SubmitField::class => t('Submit', [], ['context' => 'formazing']),
           ],
           '#size' => 1,
           '#default_value' => $config->get('type_of_field'),

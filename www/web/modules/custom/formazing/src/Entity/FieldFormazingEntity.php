@@ -150,6 +150,20 @@ class FieldFormazingEntity extends ContentEntityBase implements FieldFormazingEn
   public function setFieldType($value){
       $this->set('field_type', $value);
   }
+    
+    /**
+     * @return string
+     */
+    public function getMachineName(){
+        return $this->get('machine_name')->value;
+    }
+    
+    /**
+     * @param $value
+     */
+    public function setMachineName($value){
+        $this->set('machine_name', $value);
+    }
 
   /**
    * {@inheritdoc}
@@ -158,6 +172,20 @@ class FieldFormazingEntity extends ContentEntityBase implements FieldFormazingEn
     $this->set('status', $published ? TRUE : FALSE);
     return $this;
   }
+    
+    /**
+     * @param bool $value
+     */
+    public function setIsShowingLabel($value){
+        $this->set('is_showing_label', $value);
+    }
+    
+    /**
+     * @return bool
+     */
+    public function isShowingLabel(){
+        return $this->get('is_showing_label')->value;
+    }
     
     /**
      * @param bool $value
@@ -277,6 +305,26 @@ class FieldFormazingEntity extends ContentEntityBase implements FieldFormazingEn
       ])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
+    
+      $fields['machine_name'] = BaseFieldDefinition::create('string')
+        ->setLabel(t('Machine name'))
+        ->setDescription(t('The machine name of the Field formazing entity entity.'))
+        ->setSettings([
+          'max_length' => 50,
+          'text_processing' => 0,
+        ])
+        ->setDefaultValue('')
+        ->setDisplayOptions('view', [
+          'label' => 'above',
+          'type' => 'string',
+          'weight' => -4,
+        ])
+        ->setDisplayOptions('form', [
+          'type' => 'string_textfield',
+          'weight' => -4,
+        ])
+        ->setDisplayConfigurable('form', TRUE)
+        ->setDisplayConfigurable('view', TRUE);
     
       $fields['placeholder'] = BaseFieldDefinition::create('string')
         ->setLabel(t('Placeholder'))
@@ -452,6 +500,11 @@ class FieldFormazingEntity extends ContentEntityBase implements FieldFormazingEn
       $fields['is_required'] = BaseFieldDefinition::create('boolean')
         ->setLabel(t('Is required'))
         ->setDescription(t('Is this field required'))
+        ->setDefaultValue(FALSE);
+    
+      $fields['is_showing_label'] = BaseFieldDefinition::create('boolean')
+        ->setLabel(t('Show label ?'))
+        ->setDescription(t('If true, label will be showed'))
         ->setDefaultValue(FALSE);
 
     return $fields;

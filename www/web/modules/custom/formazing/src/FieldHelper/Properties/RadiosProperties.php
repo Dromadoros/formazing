@@ -3,13 +3,12 @@
 namespace Drupal\formazing\FieldHelper\Properties;
 
 use Drupal\formazing\Entity\FieldFormazingEntity;
-use Drupal\formazing\FieldHelper\Properties\PropertiesInterface;
 
 /**
  * Class Field
  * @package Drupal\formazing\FieldSettings
  */
-abstract class TextfieldProperties implements PropertiesInterface
+abstract class RadiosProperties implements PropertiesInterface
 {
     /**
      * @param FieldFormazingEntity $entity
@@ -67,23 +66,9 @@ abstract class TextfieldProperties implements PropertiesInterface
     public static function settingValue($entity)
     {
         return $elements['value'] = [
-          '#type' => 'textfield',
+          '#type' => 'checkbox',
           '#default_value' => $entity->getFieldValue(),
           '#title' => t('Default value', [], ['context' => 'formazing']),
-          '#required' => FALSE,
-        ];
-    }
-    
-    /**
-     * @param FieldFormazingEntity $entity
-     * @return array
-     */
-    public static function settingPlaceholder($entity)
-    {
-        return $elements['placeholder'] = [
-          '#type' => 'textfield',
-          '#default_value' => $entity->getPlaceholder(),
-          '#title' => t('Placeholder', [], ['context' => 'formazing']),
           '#required' => FALSE,
         ];
     }

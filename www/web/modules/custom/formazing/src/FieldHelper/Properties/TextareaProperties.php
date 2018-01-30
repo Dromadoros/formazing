@@ -29,6 +29,23 @@ abstract class TextareaProperties implements PropertiesInterface
      * @param FieldFormazingEntity $entity
      * @return array
      */
+    public static function settingMachineName($entity)
+    {
+        return $elements['id'] = [
+          '#type' => 'machine_name',
+          '#default_value' => $entity->getMachineName() ?: '',
+          '#maxlength' => 64,
+          '#description' => t('A unique name for this item. It must only contain lowercase letters, numbers, and underscores.', [], ['context' => 'formazing']),
+          '#machine_name' => [
+            'source' => ['name'],
+          ],
+        ];
+    }
+    
+    /**
+     * @param FieldFormazingEntity $entity
+     * @return array
+     */
     public static function settingType($entity)
     {
         return $elements['type'] = [
@@ -109,6 +126,19 @@ abstract class TextareaProperties implements PropertiesInterface
           '#type' => 'checkbox',
           '#default_value' => $entity->isRequired(),
           '#title' => t('Required field', [], ['context' => 'formazing']),
+        ];
+    }
+    
+    /**
+     * @param FieldFormazingEntity $entity
+     * @return array
+     */
+    public static function settingShowingLabel($entity)
+    {
+        return $elements['is_showing_label'] = [
+          '#type' => 'checkbox',
+          '#default_value' => $entity->isShowingLabel(),
+          '#title' => t('Show label', [], ['context' => 'formazing']),
         ];
     }
     

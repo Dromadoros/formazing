@@ -9,7 +9,7 @@ use Drupal\formazing\FieldHelper\Properties\PropertiesInterface;
  * Class Field
  * @package Drupal\formazing\FieldSettings
  */
-abstract class TextfieldProperties implements PropertiesInterface
+abstract class ButtonProperties implements PropertiesInterface
 {
     /**
      * @param FieldFormazingEntity $entity
@@ -64,34 +64,6 @@ abstract class TextfieldProperties implements PropertiesInterface
      * @param FieldFormazingEntity $entity
      * @return array
      */
-    public static function settingValue($entity)
-    {
-        return $elements['value'] = [
-          '#type' => 'textfield',
-          '#default_value' => $entity->getFieldValue(),
-          '#title' => t('Default value', [], ['context' => 'formazing']),
-          '#required' => FALSE,
-        ];
-    }
-    
-    /**
-     * @param FieldFormazingEntity $entity
-     * @return array
-     */
-    public static function settingPlaceholder($entity)
-    {
-        return $elements['placeholder'] = [
-          '#type' => 'textfield',
-          '#default_value' => $entity->getPlaceholder(),
-          '#title' => t('Placeholder', [], ['context' => 'formazing']),
-          '#required' => FALSE,
-        ];
-    }
-    
-    /**
-     * @param FieldFormazingEntity $entity
-     * @return array
-     */
     public static function settingPrefix($entity)
     {
         return $elements['prefix'] = [
@@ -110,35 +82,9 @@ abstract class TextfieldProperties implements PropertiesInterface
     {
         return $elements['suffix'] = [
           '#type' => 'textfield',
-          '#default_value' => $entity->getSuffix($entity),
+          '#default_value' => $entity->getSuffix(),
           '#title' => t('Suffix', [], ['context' => 'formazing']),
           '#required' => FALSE,
-        ];
-    }
-    
-    /**
-     * @param FieldFormazingEntity $entity
-     * @return array
-     */
-    public static function settingRequired($entity)
-    {
-        return $elements['is_required'] = [
-          '#type' => 'checkbox',
-          '#default_value' => $entity->isRequired(),
-          '#title' => t('Required field', [], ['context' => 'formazing']),
-        ];
-    }
-    
-    /**
-     * @param FieldFormazingEntity $entity
-     * @return array
-     */
-    public static function settingShowingLabel($entity)
-    {
-        return $elements['is_showing_label'] = [
-          '#type' => 'checkbox',
-          '#default_value' => $entity->isShowingLabel(),
-          '#title' => t('Show label', [], ['context' => 'formazing']),
         ];
     }
     

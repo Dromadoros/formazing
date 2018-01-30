@@ -3,10 +3,12 @@
 namespace Drupal\formazing\FieldSettings;
 
 use Drupal\formazing\FieldHelper\Properties\CheckboxProperties;
+use Drupal\formazing\FieldHelper\Properties\RadiosProperties;
 use Drupal\formazing\FieldViewer\Parser\CheckboxesParser;
 use Drupal\formazing\FieldViewer\Parser\CheckboxParser;
+use Drupal\formazing\FieldViewer\Parser\RadiosParser;
 
-class CheckboxesField extends CheckboxProperties
+class RadiosField extends RadiosProperties
 {
     /**
      * @param \Drupal\formazing\Entity\FieldFormazingEntity $entity
@@ -65,7 +67,7 @@ class CheckboxesField extends CheckboxProperties
      */
     public static function getMachineTypeName()
     {
-        return 'checkboxes';
+        return 'radios';
     }
     
     /**
@@ -73,6 +75,6 @@ class CheckboxesField extends CheckboxProperties
      */
     public static function getParser()
     {
-        return CheckboxesParser::class;
+        return RadiosParser::class;
     }
 }

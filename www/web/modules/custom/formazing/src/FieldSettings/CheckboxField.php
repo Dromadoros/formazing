@@ -15,6 +15,8 @@ class CheckboxField extends CheckboxProperties
     {
         $form = [];
         $form['name'] = parent::settingName($entity);
+        $form['machine_name'] = parent::settingMachineName($entity);
+        $form['is_showing_label'] = parent::settingShowingLabel($entity);
         $form['type'] = parent::settingType($entity);
         $form['value'] = parent::settingValue($entity);
         $form['prefix'] = parent::settingPrefix($entity);
