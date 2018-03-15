@@ -22,12 +22,6 @@ interface PropertiesInterface {
      * @param FieldFormazingEntity $entity
      * @return array
      */
-    public static function settingValue($entity);
-    
-    /**
-     * @param FieldFormazingEntity $entity
-     * @return array
-     */
     public static function settingPrefix($entity);
     
     /**

@@ -5,6 +5,7 @@ namespace Drupal\formazing\Form;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\formazing\Entity\FieldFormazingEntity;
+use Drupal\formazing\Entity\FormazingEntity;
 use Drupal\formazing\Entity\ResultFormazingEntity;
 use Drupal\formazing\FieldHelper\FieldAction;
 
@@ -75,12 +76,14 @@ class DynamicForm extends FormBase
      */
     public function submitForm(array &$form, FormStateInterface $form_state)
     {
-        $values = FieldAction::cleanFormValues($form_state);
+        $values = FieldAction::cleanFormValues($form_state, $form);
         $type = $form['_form_type']['value'];
+        $formazing = FormazingEntity::load($type);
         
         $entity = ResultFormazingEntity::create([
             'form_type' => $type,
-            'data' => json_encode($values),
+            'name' => $formazing->getName(),
+            'data' => json_encode(array_filter($values, function($value) { return $value['type'] !== 'submit'; })),
             'langcode' => \Drupal::languageManager()->getCurrentLanguage()->getId(),
         ]);
         

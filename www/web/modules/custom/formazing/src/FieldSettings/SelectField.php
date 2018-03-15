@@ -2,10 +2,13 @@
 
 namespace Drupal\formazing\FieldSettings;
 
-use Drupal\formazing\FieldHelper\Properties\CheckboxesProperties;
+use Drupal\formazing\FieldHelper\Properties\CheckboxProperties;
+use Drupal\formazing\FieldHelper\Properties\SelectProperties;
 use Drupal\formazing\FieldViewer\Parser\CheckboxesParser;
+use Drupal\formazing\FieldViewer\Parser\CheckboxParser;
+use Drupal\formazing\FieldViewer\Parser\SelectParser;
 
-class CheckboxesField extends CheckboxesProperties
+class SelectField extends SelectProperties
 {
     /**
      * @param \Drupal\formazing\Entity\FieldFormazingEntity $entity
@@ -64,7 +67,7 @@ class CheckboxesField extends CheckboxesProperties
      */
     public static function getMachineTypeName()
     {
-        return 'checkboxes';
+        return 'select';
     }
     
     /**
@@ -72,6 +75,6 @@ class CheckboxesField extends CheckboxesProperties
      */
     public static function getParser()
     {
-        return CheckboxesParser::class;
+        return SelectParser::class;
     }
 }

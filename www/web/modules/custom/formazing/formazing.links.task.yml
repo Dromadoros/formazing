@@ -23,7 +23,7 @@ entity.formazing_entity.delete_form:
 entity.formazing_entity_elements_task.view:
   route_name: entity.formazing_entity_elements.view
   base_route: entity.formazing_entity.canonical
-  title: 'View elements'
+  title: 'View fields'
 # Field formazing entity routing definition
 field_formazing_entity.settings_tab:
   route_name: field_formazing_entity.settings

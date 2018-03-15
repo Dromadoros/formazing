@@ -67,14 +67,41 @@ class FieldAction
     
     /**
      * @param \Drupal\Core\Form\FormStateInterface $form_state
+     * @param array $form
      * @return array
      */
-    public static function cleanFormValues($form_state) {
+    public static function cleanFormValues($form_state, $form) {
         $wrong_values = ['form_build_id', 'form_token', 'form_id', 'op'];
         $values = $form_state->getValues();
         
-        return array_filter($values, function($key) use ($wrong_values) {
+        $results = array_filter($values, function($key) use ($wrong_values) {
             return !in_array($key, $wrong_values);
         }, ARRAY_FILTER_USE_KEY);
+        
+        /** @TODO refactor this shit */
+        return array_map(function($result, $key) use ($form) {
+            $type = $form[$key]['#type'];
+            $value = $result;
+            
+            if ('radios' === $type || 'select' === $type) {
+                $value = $form[$key]['#options'][$result];
+                $type = 'textfield';
+            }
+            else if ('checkboxes' === $type) {
+                $value = '';
+                foreach ($result as $k => $res) {
+                    if (0 === $res) {
+                        continue;
+                    }
+                    $value .= $form[$key]['#options'][$k] . ' || ';
+                }
+                $type = 'textfield';
+            }
+            return [
+              'value' => $value,
+              'label' => $key,
+              'type' => $type,
+            ];
+        }, $results, array_keys($results));
     }
 }

@@ -16,10 +16,21 @@ class ResultFormazingEntityForm extends ContentEntityForm {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    /* @var $entity \Drupal\formazing\Entity\ResultFormazingEntity */
-    $form = parent::buildForm($form, $form_state);
-
-    $entity = $this->entity;
+    $form = [];
+    
+    $datas = $this->entity->get('data')->value;
+    
+    if (!$datas) {
+        return;
+    }
+    
+    $datas = json_decode($datas);
+    
+    foreach ($datas as $key => $data) {
+        $form[$key]['#title'] = $data->label;
+        $form[$key]['#type'] = $data->type;
+        $form[$key]['#value'] = $data->value;
+    }
 
     return $form;
   }
