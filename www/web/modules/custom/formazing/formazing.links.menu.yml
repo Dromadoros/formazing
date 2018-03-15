@@ -1,28 +1,21 @@
-
 # Formazing entity menu items definition
 entity.formazing_entity.collection:
-  title: 'Formazing entity list'
+  title: 'Formazings'
   route_name: entity.formazing_entity.collection
-  description: 'List Formazing entity entities'
+  description: 'List all amazing forms'
   parent: system.admin_structure
   weight: 100
 
-formazing_entity.admin.structure.settings:
-  title: Formazing entity settings
-  description: 'Configure Formazing entity entities'
-  route_name: formazing_entity.settings
-  parent: system.admin_structure
-
-# Field formazing entity menu items definition
-entity.field_formazing_entity.collection:
-  title: 'Field formazing entity list'
-  route_name: entity.field_formazing_entity.collection
-  description: 'List Field formazing entity entities'
+# Result formazing entity menu items definition
+entity.result_formazing_entity.collection:
+  title: 'Result formazing entity list'
+  route_name: entity.result_formazing_entity.collection
+  description: 'List Result formazing entity entities'
   parent: system.admin_structure
   weight: 100
 
-field_formazing_entity.admin.structure.settings:
-  title: Field formazing entity settings
-  description: 'Configure Field formazing entity entities'
-  route_name: field_formazing_entity.settings
+result_formazing_entity.admin.structure.settings:
+  title: Result formazing entity settings
+  description: 'Configure Result formazing entity entities'
+  route_name: result_formazing_entity.settings
   parent: system.admin_structure

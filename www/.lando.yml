@@ -1,0 +1,30 @@
+name: formazing-module
+recipe: drupal8
+config:
+  webroot: /web
+  xdebug: true
+services:
+  phpcli:
+    # PHP version 7.1
+        type: php:7.1
+
+        # Set to run in CLI mode
+        via: cli
+
+        # Optionally install the following composer dependencies globally
+        # These follow the normal composer.json form
+        # Note that many composer dependencies should not be installed globally but
+        # on a per-project basis
+        # composer:
+        #  overtrue/phplint: '*'
+
+        # Optionally run the following commands after the service is started
+        # Runs composer install but dont fail on an error
+        # build:
+        #  - "cd $LANDO_MOUNT && composer install || true"
+
+        # Optionally activate xdebug
+        #
+        # If you are having trouble getting xdebug to work please see:
+        # https://docs.devwithlando.io/services/php.html#using-xdebug
+        xdebug: true

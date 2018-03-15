@@ -35,7 +35,10 @@ class FieldAction
         return $a->getWeight() < $b->getWeight() ? -1 : 1;
     }
     
-    
+    /**
+     * @param $options
+     * @return array
+     */
     public static function filterEmptyOption($options)
     {
         if (!$options) {
@@ -60,5 +63,18 @@ class FieldAction
         $value = str_replace(' ', '', $value);
         
         return $value['value'] && strlen($value['value']);
+    }
+    
+    /**
+     * @param \Drupal\Core\Form\FormStateInterface $form_state
+     * @return array
+     */
+    public static function cleanFormValues($form_state) {
+        $wrong_values = ['form_build_id', 'form_token', 'form_id', 'op'];
+        $values = $form_state->getValues();
+        
+        return array_filter($values, function($key) use ($wrong_values) {
+            return !in_array($key, $wrong_values);
+        }, ARRAY_FILTER_USE_KEY);
     }
 }

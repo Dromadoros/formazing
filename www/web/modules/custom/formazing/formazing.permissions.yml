@@ -82,3 +82,22 @@ view published field formazing entity entities:
 
 view unpublished field formazing entity entities:
   title: 'View unpublished Field formazing entity entities'
+add result formazing entity entities:
+  title: 'Create new Result formazing entity entities'
+
+administer result formazing entity entities:
+  title: 'Administer Result formazing entity entities'
+  description: 'Allow to access the administration form to configure Result formazing entity entities.'
+  restrict access: true
+
+delete result formazing entity entities:
+  title: 'Delete Result formazing entity entities'
+
+edit result formazing entity entities:
+  title: 'Edit Result formazing entity entities'
+
+view published result formazing entity entities:
+  title: 'View published Result formazing entity entities'
+
+view unpublished result formazing entity entities:
+  title: 'View unpublished Result formazing entity entities'
