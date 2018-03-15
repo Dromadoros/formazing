@@ -2,20 +2,14 @@
 entity.formazing_entity.collection:
   title: 'Formazings'
   route_name: entity.formazing_entity.collection
-  description: 'List all amazing forms'
+  description: 'Create|Edit|List your amazing form'
   parent: system.admin_structure
   weight: 100
 
 # Result formazing entity menu items definition
 entity.result_formazing_entity.collection:
-  title: 'Result formazing entity list'
+  title: 'Formazing : Results'
   route_name: entity.result_formazing_entity.collection
-  description: 'List Result formazing entity entities'
+  description: 'List all results from formazing forms'
   parent: system.admin_structure
   weight: 100
-
-result_formazing_entity.admin.structure.settings:
-  title: Result formazing entity settings
-  description: 'Configure Result formazing entity entities'
-  route_name: result_formazing_entity.settings
-  parent: system.admin_structure

@@ -44,7 +44,7 @@ class ResultFormazingEntityHtmlRouteProvider extends AdminHtmlRouteProvider {
       $route
         ->setDefaults([
           '_form' => 'Drupal\formazing\Form\ResultFormazingEntitySettingsForm',
-          '_title' => "{$entity_type->getLabel()} settings",
+          '_title' => t('Formazing : Results'),
         ])
         ->setRequirement('_permission', $entity_type->getAdminPermission())
         ->setOption('_admin_route', TRUE);
