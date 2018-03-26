@@ -17,7 +17,7 @@ use Drupal\Core\TypedData\DataDefinition;
  *
  * @FieldType(
  *   id = "formazing_field_type",
- *   label = @Translation("Formazing field type"),
+ *   label = @Translation("Formazing"),
  *   description = @Translation("A list of all formazing forms"),
  *   default_widget = "formazing_widget_type",
  *   default_formatter = "formazing_formatter_type"
