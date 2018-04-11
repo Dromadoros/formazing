@@ -81,6 +81,7 @@ class FormazingEntityFieldsOverview extends FormBase
           '#header' => [
             $this->t('Label', [], ['formazing']),
             $this->t('Type', [], ['formazing']),
+            $this->t('Weight', [], ['formazing']),
             $this->t('Operations', [], ['formazing']),
           ],
           '#tabledrag' => [
