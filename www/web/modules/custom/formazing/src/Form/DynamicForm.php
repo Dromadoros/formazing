@@ -2,6 +2,8 @@
 
 namespace Drupal\formazing\Form;
 
+use Drupal\Console\Bootstrap\Drupal;
+use Drupal\Core\Extension\ModuleHandler;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\formazing\Entity\FieldFormazingEntity;
@@ -34,13 +36,13 @@ class DynamicForm extends FormBase
         }
         $value = $buildInfo['args'][0];
         $entityType = 'field_formazing_entity';
-    
+        
         $query = \Drupal::entityQuery($entityType);
         $query->condition('formazing_id', $value);
         $entity_ids = $query->execute();
         
         $fields = FieldFormazingEntity::loadMultiple($entity_ids);
-    
+        
         uasort($fields, [FieldAction::class, 'orderWeight']);
         
         /** @var FieldFormazingEntity $field */
@@ -56,8 +58,8 @@ class DynamicForm extends FormBase
         }
         
         $form['_form_type'] = [
-            'type' => 'hidden',
-            'value' => $value,
+          'type' => 'hidden',
+          'value' => $value,
         ];
         
         return $form;
@@ -79,12 +81,14 @@ class DynamicForm extends FormBase
         $values = FieldAction::cleanFormValues($form_state, $form);
         $type = $form['_form_type']['value'];
         $formazing = FormazingEntity::load($type);
+        \Drupal::moduleHandler()->invokeAll('formazing_' . $formazing->getName(), [$form, $form_state]);
+        \Drupal::moduleHandler()->invokeAll('formazing', [$form, $form_state]);
         
         $entity = ResultFormazingEntity::create([
-            'form_type' => $type,
-            'name' => $formazing->getName(),
-            'data' => json_encode(array_filter($values, function($value) { return $value['type'] !== 'submit'; })),
-            'langcode' => \Drupal::languageManager()->getCurrentLanguage()->getId(),
+          'form_type' => $type,
+          'name' => $formazing->getName(),
+          'data' => json_encode(array_filter($values, function($value) { return $value['type'] !== 'submit'; })),
+          'langcode' => \Drupal::languageManager()->getCurrentLanguage()->getId(),
         ]);
         
         $entity->save();
