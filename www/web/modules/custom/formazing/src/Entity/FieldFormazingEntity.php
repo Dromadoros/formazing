@@ -35,6 +35,7 @@ use Drupal\user\UserInterface;
  *       "html" = "Drupal\formazing\FieldFormazingEntityHtmlRouteProvider",
  *     },
  *   },
+ *   translatable = TRUE,
  *   base_table = "field_formazing_entity",
  *   admin_permission = "administer field formazing entity entities",
  *   entity_keys = {
