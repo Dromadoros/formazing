@@ -2,6 +2,6 @@
 
 namespace Drupal\formazing\FieldViewer\Parser;
 
-class TextfieldParser extends Parser
-{
+class TextfieldParser extends Parser {
+
 }

@@ -2,6 +2,6 @@
 
 namespace Drupal\formazing\FieldViewer\Parser;
 
-class CheckboxParser extends Parser
-{
+class CheckboxParser extends Parser {
+
 }

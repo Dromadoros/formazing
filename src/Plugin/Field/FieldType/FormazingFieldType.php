@@ -30,21 +30,23 @@ class FormazingFieldType extends FieldItemBase {
    */
   public static function defaultStorageSettings() {
     return [
-      'max_length' => 255,
-      'is_ascii' => FALSE,
-      'case_sensitive' => FALSE,
-    ] + parent::defaultStorageSettings();
+        'max_length' => 255,
+        'is_ascii' => FALSE,
+        'case_sensitive' => FALSE,
+      ] + parent::defaultStorageSettings();
   }
 
   /**
    * {@inheritdoc}
    */
-  public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition) {
+  public static function propertyDefinitions(
+    FieldStorageDefinitionInterface $field_definition
+  ) {
     // Prevent early t() calls by using the TranslatableMarkup.
     $properties['value'] = DataDefinition::create('string')
-      ->setLabel(new TranslatableMarkup('Text value'))
-      ->setSetting('case_sensitive', $field_definition->getSetting('case_sensitive'))
-      ->setRequired(TRUE);
+                                         ->setLabel(new TranslatableMarkup('Text value'))
+                                         ->setSetting('case_sensitive', $field_definition->getSetting('case_sensitive'))
+                                         ->setRequired(TRUE);
 
     return $properties;
   }
@@ -52,7 +54,9 @@ class FormazingFieldType extends FieldItemBase {
   /**
    * {@inheritdoc}
    */
-  public static function schema(FieldStorageDefinitionInterface $field_definition) {
+  public static function schema(
+    FieldStorageDefinitionInterface $field_definition
+  ) {
     $schema = [
       'columns' => [
         'value' => [
@@ -69,6 +73,17 @@ class FormazingFieldType extends FieldItemBase {
   /**
    * {@inheritdoc}
    */
+  public static function generateSampleValue(
+    FieldDefinitionInterface $field_definition
+  ) {
+    $random = new Random();
+    $values['value'] = $random->word(mt_rand(1, $field_definition->getSetting('max_length')));
+    return $values;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getConstraints() {
     $constraints = parent::getConstraints();
 
@@ -79,9 +94,9 @@ class FormazingFieldType extends FieldItemBase {
           'Length' => [
             'max' => $max_length,
             'maxMessage' => t('%name: may not be longer than @max characters.', [
-              '%name' => $this->getFieldDefinition()->getLabel(),
-              '@max' => $max_length
-            ]),
+                '%name' => $this->getFieldDefinition()->getLabel(),
+                '@max' => $max_length
+              ]),
           ],
         ],
       ]);
@@ -93,16 +108,9 @@ class FormazingFieldType extends FieldItemBase {
   /**
    * {@inheritdoc}
    */
-  public static function generateSampleValue(FieldDefinitionInterface $field_definition) {
-    $random = new Random();
-    $values['value'] = $random->word(mt_rand(1, $field_definition->getSetting('max_length')));
-    return $values;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function storageSettingsForm(array &$form, FormStateInterface $form_state, $has_data) {
+  public function storageSettingsForm(
+    array &$form, FormStateInterface $form_state, $has_data
+  ) {
     $elements = [];
 
     $elements['max_length'] = [

@@ -41,13 +41,10 @@ class ResultFormazingEntityHtmlRouteProvider extends AdminHtmlRouteProvider {
   protected function getSettingsFormRoute(EntityTypeInterface $entity_type) {
     if (!$entity_type->getBundleEntityType()) {
       $route = new Route("/admin/structure/{$entity_type->id()}/settings");
-      $route
-        ->setDefaults([
-          '_form' => 'Drupal\formazing\Form\ResultFormazingEntitySettingsForm',
-          '_title' => t('Formazing : Results'),
-        ])
-        ->setRequirement('_permission', $entity_type->getAdminPermission())
-        ->setOption('_admin_route', TRUE);
+      $route->setDefaults([
+        '_form' => 'Drupal\formazing\Form\ResultFormazingEntitySettingsForm',
+        '_title' => t('Formazing : Results'),
+      ])->setRequirement('_permission', $entity_type->getAdminPermission())->setOption('_admin_route', TRUE);
 
       return $route;
     }

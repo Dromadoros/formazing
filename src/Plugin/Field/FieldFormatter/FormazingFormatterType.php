@@ -28,18 +28,16 @@ class FormazingFormatterType extends FormatterBase {
    * {@inheritdoc}
    */
   public static function defaultSettings() {
-    return [
-      // Implement default settings.
-    ] + parent::defaultSettings();
+    return [// Implement default settings.
+      ] + parent::defaultSettings();
   }
 
   /**
    * {@inheritdoc}
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
-    return [
-      // Implement settings form.
-    ] + parent::settingsForm($form, $form_state);
+    return [// Implement settings form.
+      ] + parent::settingsForm($form, $form_state);
   }
 
   /**
@@ -56,15 +54,15 @@ class FormazingFormatterType extends FormatterBase {
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
-    
+
     $id = $items->value;
-    
-    if(!$id){
-        return [];
+
+    if (!$id) {
+      return [];
     }
-    
+
     $form = \Drupal::formBuilder()->getForm(DynamicForm::class, $id);
-    
+
     return $form;
   }
 

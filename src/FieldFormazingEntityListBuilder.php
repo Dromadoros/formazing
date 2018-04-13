@@ -29,11 +29,7 @@ class FieldFormazingEntityListBuilder extends EntityListBuilder {
   public function buildRow(EntityInterface $entity) {
     /* @var $entity \Drupal\formazing\Entity\FieldFormazingEntity */
     $row['id'] = $entity->id();
-    $row['name'] = Link::createFromRoute(
-      $entity->label(),
-      'entity.field_formazing_entity.edit_form',
-      ['field_formazing_entity' => $entity->id()]
-    );
+    $row['name'] = Link::createFromRoute($entity->label(), 'entity.field_formazing_entity.edit_form', ['field_formazing_entity' => $entity->id()]);
     return $row + parent::buildRow($entity);
   }
 
