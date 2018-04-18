@@ -23,7 +23,7 @@ class FormazingEntityFieldsOverview extends FormBase {
    *   The unique string identifying the form.
    */
   public function getFormId() {
-    return 'elements_overview';
+    return 'formazing_elements_overview';
   }
 
   /**

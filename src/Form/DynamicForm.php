@@ -54,6 +54,10 @@ class DynamicForm extends FormBase {
 
       $form[$key] = $parser::parse($field);
     }
+    
+    $form['#cache'] = [
+      'tags' => ['formazing_form']
+    ];
 
     $form['_form_type'] = [
       '#type' => 'hidden',
