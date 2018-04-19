@@ -21,7 +21,7 @@ the operations column, select the "Json export".
 
 On form's submit, send data to this endpoint:
 
-`/admin/structure/formazing_entity/{FORMAZING_ID}/json/post`
+`/formazing/{FORMAZING_ID}/json/post`
 
 The body must respect this structure, here is a sample:
 

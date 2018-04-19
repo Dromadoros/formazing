@@ -33,7 +33,7 @@ formazing.dynamic_form:
     _admin_route: TRUE
 
 formazing.exported_json:
-  path: '/admin/structure/formazing_entity/{formazing_id}/json/export'
+  path: '/formazing/{formazing_id}/json/export'
   defaults:
     _controller: '\Drupal\formazing\Controller\FormazingController::export'
     _title: 'Exported Formazing'
@@ -41,7 +41,7 @@ formazing.exported_json:
     _permission: 'access content'
 
 formazing.handle_post_form:
-  path: '/admin/structure/formazing_entity/{formazing_id}/json/post'
+  path: '/formazing/{formazing_id}/json/post'
   method: [POST]
   defaults:
     _controller: '\Drupal\formazing\Controller\FormazingController::postForm'
