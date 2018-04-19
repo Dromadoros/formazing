@@ -23,7 +23,7 @@ On form's submit, send data to this endpoint:
 
 `/admin/structure/formazing_entity/{FORMAZING_ID}/json/post`
 
-The body must respect this structure:
+The body must respect this structure, here is a sample:
 
 ```
 {
