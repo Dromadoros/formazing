@@ -60,9 +60,11 @@ abstract class Property {
    * @return array
    */
   public static function settingType($entity) {
+    /** @var \Drupal\formazing\FieldSettings\TextField $type */
+    $type = $entity->getFieldType();
     return $elements['type'] = [
       '#type' => 'textfield',
-      '#default_value' => $entity->getFieldType(),
+      '#default_value' => $type::getMachineTypeName(),
       '#title' => t('Type of field', [], ['context' => 'formazing']),
       '#required' => TRUE,
       '#attributes' => array(

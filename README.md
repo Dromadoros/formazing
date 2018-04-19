@@ -12,3 +12,55 @@ _Setup_
 6. Enjoy
 
 `If you want to do some more things on submitted forms, you can handle it with a hook_formazing OR hook_formazing_FORM-ID`
+
+
+Front-end:
+
+If you use a framework like React, Vue, ... You can get the JSON of the form's structure in the formazing list, in 
+the operations column, select the "Json export".
+
+On form's submit, send data to this endpoint:
+
+`/admin/structure/formazing_entity/{FORMAZING_ID}/json/post`
+
+The body must respect this structure:
+
+```
+{
+	"data": {
+		"fields": {
+			"0": {
+			    "label": "Textfield - Firstname",
+				"value": "Theodoros",
+				"type": "textfield"
+			},
+			"1": {
+				"label": "Textield - Lastname",
+				"value": "Suliotis",
+				"type": "textfield"
+			},
+			"2": {
+				"label": "Checkbox - I am cool ?",
+				"value": "1",
+				"type": "checkbox"
+			},
+			"3": {
+				"label": "Select - hobbys",
+				"value": "Football",
+				"type": "textfield"
+			},
+			"4": {
+				"label": "Checkboxes - hobbys",
+				"value": "Football || Badminton",
+				"type": "textfield"
+			},
+			"5": {
+				"label": "Textarea - message",
+				"value": "I think it's amazing to use formazing",
+				"type": "textfield"
+			}
+		},
+		"form_id": 5
+	}
+}
+```

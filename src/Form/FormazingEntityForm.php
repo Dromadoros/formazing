@@ -23,12 +23,6 @@ class FormazingEntityForm extends ContentEntityForm {
 
     $entity = $this->entity;
 
-    $form['linked_api'] = [
-      '#type' => 'checkbox',
-      '#default_value' => $entity->getIsLinkedApi(),
-      '#title' => $this->t('Form linked to an API')
-    ];
-
     return $form;
   }
 

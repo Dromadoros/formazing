@@ -21,6 +21,7 @@ entity.formazing_entity_field.edit:
     _title: 'Edit field'
   requirements:
     _permission: 'formazing entities view'
+
 formazing.dynamic_form:
   path: '/admin/config/formazing/dynamic'
   defaults:
@@ -31,3 +32,19 @@ formazing.dynamic_form:
   options:
     _admin_route: TRUE
 
+formazing.exported_json:
+  path: '/admin/structure/formazing_entity/{formazing_id}/json/export'
+  defaults:
+    _controller: '\Drupal\formazing\Controller\FormazingController::export'
+    _title: 'Exported Formazing'
+  requirements:
+    _permission: 'access content'
+
+formazing.handle_post_form:
+  path: '/admin/structure/formazing_entity/{formazing_id}/json/post'
+  method: [POST]
+  defaults:
+    _controller: '\Drupal\formazing\Controller\FormazingController::postForm'
+    _title: 'Submit form'
+  requirements:
+    _permission: 'access content'
